@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Fustat', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Fustat', 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* CodeChef White-Blue Design System Tokens */
+    --color-foreground-1: #4A4A4A;
+    --color-primary-2: #B3BDD2;
+    --color-background-3: #FFFFFF;
+    --color-primary-4: #667399;
+    --color-foreground-5: #363636;
+    --color-foreground-6: #000000;
+    --color-secondary-7: #4079DA;
+    --color-secondary-8: #152A4C;
+    --color-surface-muted: #F8FAFC;
+    --color-border-light: #E2E8F0;
+    --shadow-sm: rgba(0, 0, 0, 0.08) 0px 2px 8px 0px;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F8FAFC;
+    color: #363636;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    color: #152A4C;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Clean Light White-Blue Theme Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Hide scrollbars utility for responsive mobile nav rails */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

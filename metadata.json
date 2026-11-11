@@ -1,0 +1,6 @@
+{
+  "name": "InterviewX AI — 3D AI Interview Simulator",
+  "description": "Production-ready 3D AI technical, HR, and DSA coding interview simulator with Waguri VRM avatar pipeline, adaptive LLM engine, real-time voice & observable presentation analytics, and sandboxed code execution.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

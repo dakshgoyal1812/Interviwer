@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: interviewx-ai-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/status
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: CORS_ORIGINS
+        sync: false # comma-separated Vercel origins, e.g. https://interviewx.vercel.app
+      # --- LLM (KeyPool rotation, OpenAI-compatible) ---
+      - key: LLM_API_KEYS
+        sync: false # comma-separated OpenRouter/Groq/etc. keys
+      - key: LLM_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: LLM_MODEL
+        value: meta-llama/llama-3.3-70b-instruct:free
+      - key: GEMINI_API_KEY
+        sync: false # optional secondary provider
+      # --- Supabase (service key stays here, never in the frontend) ---
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      # --- Voice: Edge TTS is keyless & primary; Azure optional fallback ---
+      - key: EDGE_TTS_VOICE_DEFAULT
+        value: en-US-AriaNeural
+      - key: AZURE_SPEECH_KEY
+        sync: false
+      - key: AZURE_SPEECH_REGION
+        value: eastus
+      # --- Code execution sandbox (never runs on this server) ---
+      - key: CODE_SANDBOX_PROVIDER
+        value: piston
+      - key: PISTON_API_URL
+        value: https://emkc.org/api/v2/piston
+      - key: JUDGE0_API_URL
+        value: https://ce.judge0.com
+      - key: JUDGE0_API_KEY
+        sync: false
